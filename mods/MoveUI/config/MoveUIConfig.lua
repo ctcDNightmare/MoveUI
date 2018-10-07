@@ -1,7 +1,22 @@
 local MoveUIConfig = {}
 MoveUIConfig.Author = "Dirtyredz"
-MoveUIConfig.version = "[1.3.0]"
 MoveUIConfig.ModName = "[MoveUI]"
+
+MoveUIConfig.version = {
+    major=2, minor=1, patch = 0,
+    string = function()
+        return  Config.version.major .. '.' ..
+                Config.version.minor .. '.' ..
+                Config.version.patch
+    end
+}
+
+function MoveUIConfig.print(...)
+  local args = table.pack(...)
+  table.insert(args,1,"[" .. MoveUIConfig.ModName .. "][" .. MoveUIConfig.version.string() .. "]")
+  print(table.unpack(args))
+end
+
 MoveUIConfig.HudList = {}
 
 function MoveUIConfig.AddUI(FileName, ForceStartEnabled, ForceRemove, Restriction)
@@ -17,12 +32,14 @@ function MoveUIConfig.AddUI(FileName, ForceStartEnabled, ForceRemove, Restrictio
 end
 
 MoveUIConfig.AddUI("ResourcesUI")
-MoveUIConfig.AddUI("DistCore")
---example restrictions use:
---MoveUIConfig.AddUI("DistCoreDisplay",false,false,function (player) return player:getValue('granted_benefits') or false end)
+MoveUIConfig.AddUI("DistCore", true)
 MoveUIConfig.AddUI("CargoNotifier", true)
 MoveUIConfig.AddUI("ScrapyardLicenses", true)
-MoveUIConfig.AddUI("ObjectDetector", true)
-MoveUIConfig.AddUI("PVPSector", true)
+MoveUIConfig.AddUI("ObjectDetector", false)
+MoveUIConfig.AddUI("PVPSector", false)
+MoveUIConfig.AddUI("FactionNotifier", false)
+MoveUIConfig.AddUI("Clock", true)
+MoveUIConfig.AddUI("PowerSystems", false)
+MoveUIConfig.AddUI("Notepad", false)
 
 return MoveUIConfig
