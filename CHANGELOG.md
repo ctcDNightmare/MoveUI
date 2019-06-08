@@ -1,7 +1,13 @@
+2.2.1
+  --Added 12/24 option for the Clock
+
+2.2.0
+  --Support for 0.20 security update
+
 2.1.1
   --Fixed bug in PowerSystems
   --Changed how Clock UI gets current time
-  
+
 2.1.0
   --Added PowerSystems UI
   --Added Notepad UI
